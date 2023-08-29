@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Brython Page</title>
+    <script type="text/javascript" 
+    src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
+    <script type="text/javascript" 
+    src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.js"></script>
+</head>
+<body onload="brython()">
+    <p>请输入你猜的数字（0-100）：</p>
+    <input type="text" id="guess">
+    <button id="button">提交</button>
+
+    <script type="text/python">
+        from browser import document, alert
+        import random 
+        numbers = random.randint(1,100)
+
+        def on_button_click(event):
+            guess = int(document["guess"].value)
+            if guess > numbers:
+                alert('猜大了')
+            elif guess < numbers:
+                alert('猜小了')
+            else:
+                alert('恭喜你，答对了')
+
+        document["button"].bind("click", on_button_click)
+    </script>
+</body>
+</html>
+     
